@@ -1,20 +1,20 @@
 const { exists, spawnSync, writeFile, readFile, mkdir } = require('./base');
 const init = async () => {
-  if (!(await exists('./temp'))) {
-    await mkdir('./temp/');
+  if (!(await exists(__dirname + '/../../temp'))) {
+    await mkdir(__dirname + '/../../temp/');
   }
 };
 
 const storage = {
   set: async (key, value) => {
     await init();
-    const path = `./temp/${key}.txt`;
+    const path = __dirname + `/../../temp/${key}.txt`
     if (await exists(path)) spawnSync('rm', [path]);
     await writeFile(path, JSON.stringify(value), 'utf-8');
   },
 
   get: async (key) => {
-    const path = `./temp/${key}.txt`;
+    const path = __dirname + `/../../temp/${key}.txt`
     if (!(await exists(path))) return null;
     let result = {};
     try {
@@ -27,14 +27,14 @@ const storage = {
 
   write: async (name, content, encoding = 'utf-8') => {
     await init();
-    const path = `./temp/${name}`;
+    const path = __dirname + `/../../temp/${name}`
     if (await exists(path)) spawnSync('rm', [path]);
     await writeFile(path, content, encoding);
     return path;
   },
 
   read: async (name) => {
-    const path = `./temp/${name}`;
+    const path = __dirname + `/../../temp/${name}`
     if (!(await exists(path))) return null;
     return await readFile(path, 'utf-8');
   },
