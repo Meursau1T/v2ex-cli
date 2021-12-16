@@ -43,14 +43,16 @@ const findPost = async(id) => {
   const id = commander.args[0]
   if (!id) return checkLog.fail('id is required')
   
-  const postsStorage = await storage.get('posts')
-  if (!postsStorage) return await findPost(id)
-  
+  const postsStorage = await storage.get('posts');
+  if (!postsStorage) {
+    console.log('Please use v2 show first.');
+  }
+
   // post => [id, title, re, author]
-  let post = postsStorage.find(post => post[0] === id)
-  if (post && post.id) return await findPost(post.id)
-  
-  post = postsStorage.find(post => String(post[0]).endsWith(id))
-  if (post && post[0]) return await findPost(post[0])
-  await findPost(id)
+  const post = postsStorage[id];
+  if (post && post[0]) {
+    return await findPost(post[0]);
+  }
+
+  await findPost(id);
 })()

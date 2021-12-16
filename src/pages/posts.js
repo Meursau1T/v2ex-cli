@@ -25,7 +25,7 @@ module.exports = {
       }
       const $ = cheerio.load(String(posts));
       const result = [];
-      $('span.item_title').each(function () {
+      $('span.item_title').each(function (index) {
         const postLink = cheerio(cheerio(this).find('a')[0]);
         const userLink = cheerio(this)
           .parents('tr')
@@ -36,12 +36,12 @@ module.exports = {
           links && links[0]
             ? cheerio(links[0]).attr('href').split('reply')[1]
             : 0;
-        // [id, title, re, member]
+        // [id, title, re, index]
         result.push([
           postLink.attr('href').split('#')[0].match(/\d+/g)[0],
           postLink.text(),
           replies,
-          userLink.attr('href').split('member/')[1],
+          index,
         ]);
       });
       return result;

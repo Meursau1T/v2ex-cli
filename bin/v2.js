@@ -13,7 +13,7 @@ commander
   .version(version)
   .usage('<command> [options]')
   .command('show [page]', 'display v2ex portal page')
-  .command('read [id]', 'view a topic')
+  .command('read [index | id]', 'view topic')
   .command('nodes [name]', 'view all nodes')
   .command('cache', 'show cache')
   .command('reply', 'create a reply')

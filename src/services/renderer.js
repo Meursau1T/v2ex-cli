@@ -7,8 +7,8 @@ module.exports = {
   renderPosts: async (page = 1, node = {}) => {
     const fetchLog = new ora('fetching...').start();
     const table = new Table({
-      head: ['id', 'title', 're', 'member'],
-      colWidths: [10, 60, 5, 15],
+      head: ['id', 'title', 're', 'index'],
+      colWidths: [10, 60, 5, 7],
     });
 
     try {
