@@ -11,7 +11,8 @@ module.exports = {
   index: async (page, node = null) => {
     const uri = node
       ? `${apis.go}/${node}?p=${page}`
-      : `${apis.recent}?p=${page}`;
+      // : `${apis.recent}?p=${page}`;
+      : `${apis.host}?p=${page}`;
     try {
       const posts = await request({
         uri,
