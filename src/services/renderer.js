@@ -4,7 +4,7 @@ const { storage, histroy } = require('../utils');
 const { index } = require('../pages/posts');
 
 module.exports = {
-  renderPosts: async (page = 1, node = {}) => {
+  renderPosts: async (page = 0, node = {}) => {
     const fetchLog = new ora('fetching...').start();
     const table = new Table({
       head: ['id', 'title', 're', 'index'],

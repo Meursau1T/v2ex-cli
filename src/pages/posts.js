@@ -9,10 +9,15 @@ const {
 
 module.exports = {
   index: async (page, node = null) => {
-    const uri = node
-      ? `${apis.go}/${node}?p=${page}`
-      // : `${apis.recent}?p=${page}`;
-      : `${apis.host}?p=${page}`;
+    const uri = (() => {
+      if (page) {
+        if (node) {
+          return `${apis.go}/${node}?p=${page}`;
+        }
+        return `${apis.recent}?p=${page}`;
+      }
+      return `${apis.host}`;
+    })();
     try {
       const posts = await request({
         uri,

@@ -8,6 +8,6 @@ commander
 // check id
 ;(async() => {
   const page = commander.args[0]
-  await renderer.renderPosts(page || 1)
+  await renderer.renderPosts(page || 0)
 })()
 
