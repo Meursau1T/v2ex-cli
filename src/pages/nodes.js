@@ -1,18 +1,17 @@
-const { request, apis, makeHeader } = require('../utils')
+const { request, apis, makeHeader } = require('../utils');
 
 module.exports = {
-  index: async() => {
+  index: async () => {
     try {
       const posts = await request({
         uri: apis.nodes,
         method: 'GET',
         headers: await makeHeader(),
-      })
-      return JSON.parse(posts)
+      });
+      return JSON.parse(posts);
     } catch (e) {
-      return e
+      return e;
     }
   },
-  search: async() => {
-  },
-}
+  search: async () => {},
+};

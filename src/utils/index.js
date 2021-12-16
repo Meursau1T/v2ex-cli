@@ -1,4 +1,4 @@
-const base = require('./base')
-const storage = require('./storage')
+const base = require('./base');
+const storage = require('./storage');
 
-module.exports = Object.assign({}, base, storage)
+module.exports = Object.assign({}, base, storage);
